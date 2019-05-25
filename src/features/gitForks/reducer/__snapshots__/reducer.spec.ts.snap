@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForksSearching Stories should match a snapshot 1`] = `
+Object {
+  "error": Object {
+    "message": "",
+    "status": 0,
+  },
+  "fetching": false,
+  "forks": Array [],
+}
+`;
+
+exports[`Get Repos Stories should match a snapshot 1`] = `
+Object {
+  "error": Object {
+    "message": "",
+    "status": 0,
+  },
+  "fetching": false,
+  "repos": Array [],
+}
+`;
