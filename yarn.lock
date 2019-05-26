@@ -5997,7 +5997,7 @@ unique-slug@^2.0.0:
   dependencies:
     imurmurhash "^0.1.4"
 
-universal-rxjs-ajax@^2.0.0:
+universal-rxjs-ajax@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/universal-rxjs-ajax/-/universal-rxjs-ajax-2.0.1.tgz#248c074dff8b9c35ad55d2612522bc6651ef2441"
   integrity sha512-zIgc33vsSapIw5m16GG7zVOWmjiDdFxyl1M+Sn5OWLRGOuuHQDgIasYW7BLtHYpL+OA9boYj3llq/2xaTp7Uyw==

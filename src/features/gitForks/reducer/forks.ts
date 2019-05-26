@@ -14,8 +14,9 @@ export interface IForksState {
 export default combineReducers<IForksState, GitForksAction>({
   forks: (state = [], action) =>
     action.type === getType(fetchForks.success) ? action.payload : state,
-  fetching: (state = false, action) =>
-    action.type === getType(fetchForks.request) || (state && !(getType(fetchForks.success) || getType(fetchForks.failure))),
+  fetching: (state = false, action) => {
+    //console.log('lol123')
+    return action.type === getType(fetchForks.request) || (state && !(getType(fetchForks.success) || getType(fetchForks.failure)))},
   // tslint:disable-next-line: variable-name
   error: (_state, action) => (action.type === getType(fetchForks.failure) ? action.payload : { message: '', status: 0 }),
 })

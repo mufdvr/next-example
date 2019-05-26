@@ -41,7 +41,7 @@
     "redux-observable": "^1.0.0",
     "rxjs": "^6.3.3",
     "typesafe-actions": "^4.4.0",
-    "universal-rxjs-ajax": "^2.0.0",
+    "universal-rxjs-ajax": "^2.0.1",
     "yarn": "^1.16.0"
   },
   "license": "ISC",

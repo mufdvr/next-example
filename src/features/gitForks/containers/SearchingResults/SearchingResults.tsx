@@ -1,12 +1,11 @@
 import * as React from 'react'
-//import { RouteComponentProps } from 'react-router'
-//import queryString from 'query-string'
 import { WithRouterProps } from 'next/router'
 
 import styles from './searchingResults.scss'
 import { IForksState } from '../../reducer/forks'
 import { fetchForks } from '../../actions'
 import { Button } from 'components'
+
 
 export interface IQuery {
   userName: string
@@ -18,9 +17,10 @@ export interface IProps extends WithRouterProps<IQuery> {
   readonly fetchForks: typeof fetchForks.request
 }
 
-type AllProps = IForksState & IProps //& RouteComponentProps
+type AllProps = IForksState & IProps
 
 class SearchingResults extends React.Component<AllProps> {
+
   public componentDidMount = () => {
     const { forks, fetchForks, router } = this.props
     if (!router) return
@@ -39,6 +39,7 @@ class SearchingResults extends React.Component<AllProps> {
   }
 
   public handleChangePage = (to: number) => () => {
+    console.log(to)
     /*try {
       const { location, history } = this.props
       const { page, user: userName, repository: repoName } = queryString.parse(location.search) as any

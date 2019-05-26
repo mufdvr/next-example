@@ -6,6 +6,7 @@ export interface IForksRequest {
   userName: string
   repoName: string
   page?: number
+  isServer?: boolean
 }
 
 export interface IFork {
