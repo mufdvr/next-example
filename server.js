@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const express = require('express')
 const next = require('next')
+const routes = require('./src/routes')
 
 const devProxy = {
   '/api': {
@@ -18,7 +19,7 @@ const app = next({
   dev
 })
 
-const handle = app.getRequestHandler()
+const handle = routes.getRequestHandler(app)
 
 let server
 app

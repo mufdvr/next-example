@@ -8,7 +8,8 @@ import { Input, Button, InputWithSuggestions, Spinner } from 'components'
 import { IForksRequest } from '../../models'
 import { fetchRepos } from '../../actions'
 import { IGitForksState } from '../../reducer'
-import styles from './searching.module.scss'
+import styles from './searching.scss'
+import { Router } from 'routes'
 
 export interface IPropsFromDispatch {
   fetchRepos: typeof fetchRepos.request
@@ -55,9 +56,8 @@ class Searching extends React.Component<AllProps, IState> {
     this.setState({ [name]: value }, () => onSelect && this.handleClick())
 
   public handleClick = () => {
-    //const { history } = this.props
-    //const { userName, repoName } = this.state
-    //history.push(`/search?user=${userName}&repository=${repoName}&page=1`)
+    const { userName, repoName } = this.state
+    Router.pushRoute(`/search/${userName}/${repoName}/1`)
   }
 
   public fetchRepos = (node: HTMLInputElement) => {

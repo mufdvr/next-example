@@ -1,28 +1,38 @@
 import * as React from 'react'
-import queryString from 'query-string'
+//import { RouteComponentProps } from 'react-router'
+//import queryString from 'query-string'
+import { WithRouterProps } from 'next/router'
 
 import styles from './searchingResults.scss'
 import { IForksState } from '../../reducer/forks'
 import { fetchForks } from '../../actions'
 import { Button } from 'components'
 
-export interface IProps {
+export interface IQuery {
+  userName: string
+  repoName: string
+  page: number
+}
+
+export interface IProps extends WithRouterProps<IQuery> {
   readonly fetchForks: typeof fetchForks.request
 }
 
-type AllProps = IForksState & IProps
+type AllProps = IForksState & IProps //& RouteComponentProps
 
 class SearchingResults extends React.Component<AllProps> {
   public componentDidMount = () => {
-    const { forks, fetchForks } = this.props
-    const { page, user: userName, repository: repoName } = queryString.parse(location.search) as any
+    const { forks, fetchForks, router } = this.props
+    if (!router) return
+    const { page, userName, repoName } = router.query as IQuery
     !forks.length && repoName && userName && fetchForks({ repoName, userName, page })
   }
 
   public componentWillReceiveProps = (nextProps: AllProps) => {
-    const { fetchForks } = this.props
-    const { page: prevPage, user: prevUserName, repository: prevRepoName } = queryString.parse(location.search) as any
-    const { page, user: userName, repository: repoName } = queryString.parse(location.search) as any
+    const { fetchForks, router } = this.props
+    if (!router || !nextProps.router) return
+    const { page: prevPage, userName: prevUserName, repoName: prevRepoName } = router.query as IQuery
+    const { page, userName, repoName } = nextProps.router.query as IQuery
     if (repoName !== prevRepoName || userName !== prevUserName || prevPage !== page) {
       fetchForks({ repoName, userName, page })
     }
@@ -35,7 +45,8 @@ class SearchingResults extends React.Component<AllProps> {
       ;+page + to > 0 && history.push(`/search?user=${userName}&repository=${repoName}&page=${+page + to}`)
     } catch (e) {
       console.log(e)
-    }*/
+    }
+    */
   }
 
   public renderItems = () => {

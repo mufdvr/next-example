@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'next/router'
 import { bindActionCreators, Dispatch } from 'redux'
 import Types from 'Types'
 
@@ -21,4 +22,4 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchingResults)
+)(withRouter(SearchingResults))
